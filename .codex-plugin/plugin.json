@@ -1,7 +1,7 @@
 {
   "name": "github-first",
-  "version": "1.0.0",
-  "description": "Search GitHub before building tools, apps, or major features. Compare existing solutions deeply and wait for the user to choose before implementation.",
+  "version": "1.1.0",
+  "description": "Research GitHub solutions before building with Codex or DeepSeek Harness; compare options and wait for the user to choose.",
   "author": {
     "name": "emt-faze"
   },

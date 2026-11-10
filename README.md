@@ -7,7 +7,7 @@
 
 **让 AI 开发前先找现成方案，深入比较，再由你决定。**
 
-做一个工具之前，GitHub 上可能已经有能直接使用或稍加改造的项目。这个插件让 Codex 先调研已有方案，说明取舍，等你选定后再安装或开发，减少重复开发和不必要的成本。
+做一个工具之前，GitHub 上可能已经有能直接使用或稍加改造的项目。这个插件让 Codex 和 DeepSeek Harness（DSH）先调研已有方案，说明取舍，等你选定后再安装或开发，减少重复开发和不必要的成本。
 
 这是一个流程技能插件，复用宿主已有的 GitHub、网页搜索等能力，无需为插件单独部署服务器或配置 API 密钥。宿主本身的模型、搜索服务仍可能需要账号或产生费用。
 
@@ -28,6 +28,18 @@
 | “修复这个按钮的点击事件” | 直接处理小修复 |
 | “这次为了学习，从零写，不搜索” | 遵循本次明确要求 |
 | “我选第二个，继续安装” | 按既有选择继续，不反复询问 |
+
+## 在 DSH 中使用，或与 Codex 共用
+
+克隆本仓库后，使用 Python 3.9+ 运行：
+
+```sh
+python scripts/install.py --target dsh --with-rules
+```
+
+已经装好 Codex 插件的用户，使用上面的 DSH 专用安装即可。两端都未安装时，可用 `--target shared` 安装到共同支持的 `.agents/skills` 目录。安装器保留已有规则，备份修改前的配置；更新使用 `--update`。
+
+详见 [DSH 安装与验证指南](docs/DSH.md)。两端共用同一个核心技能，DSH 无需额外服务、Codex 工具或 Cordis 配置。
 
 ## 在 Codex 中使用
 
@@ -89,6 +101,14 @@ $github-first 帮我调研适合 Windows 的本地知识库工具，比较之后
 
 这些是模型行为规则，并非拦截所有代码写入的强制开关。其他设备需要独立安装和配置；网页端也不会读取本机规则。
 
+## 开发与验证
+
+```sh
+python -m unittest discover -s tests -v
+```
+
+安装器测试使用临时目录，覆盖原有规则保留、重复安装、已有改动备份、共享目录安装和异常规则处理。DSH 运行时验证见 [DSH 指南](docs/DSH.md)，版本记录见 [CHANGELOG](CHANGELOG.md)。
+
 ## 文件说明
 
 ```text
@@ -98,6 +118,9 @@ skills/github-first/SKILL.md         核心工作流程
 skills/github-first/agents/          技能显示和调用配置
 assets/                             青绿色浅色／深色 SVG 图标
 examples/AGENTS.md                  可选的常驻规则示例
+scripts/                            安装器及 DSH 加载验证
+tests/                              安装器回归测试
+docs/DSH.md                         DSH 使用与兼容性说明
 LICENSE                             MIT 许可证
 ```
 
@@ -114,5 +137,7 @@ LICENSE                             MIT 许可证
 ## English overview
 
 GitHub First is an instruction-only plugin for researching existing solutions before building new tools, apps, or major features. It compares suitability, deployment effort, costs, maintenance and licensing, then waits for the user to choose before implementation. Minor fixes are excluded; explicit task instructions take precedence.
+
+For DSH, run `python scripts/install.py --target dsh --with-rules`; use `--target shared` for a shared local installation. See [DSH setup](docs/DSH.md).
 
 Install `skills/github-first` into `~/.agents/skills/`, or reuse the full plugin package in a compatible host. Optionally merge `examples/AGENTS.md` into your Codex instructions for a stronger default. The workflow is written in Chinese. It uses the host's existing search tools and does not guarantee automatic invocation. MIT licensed.
