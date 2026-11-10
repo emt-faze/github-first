@@ -45,6 +45,10 @@ python scripts/install.py --target dsh --with-rules --update
 
 例如“帮我做一个桌面记账工具”应先调研；“修复这个按钮”不触发；“我选第二个，继续安装”应按选定方案继续。实际搜索需要宿主有可用的搜索或联网能力。
 
+## GitHub 认证
+
+如需让 DSH 和 Codex 共用本机 GitHub Token，参见 [GitHub CLI 认证指南](GITHUB-AUTH.md)。配置后可直接用 CLI 查询 GitHub；这不修改 DSH 的模型供应商，也不能替代 `DEEPSEEK_API_KEY`。请按指南在两个宿主中分别验证账号和实际搜索。
+
 ## 验证和限制
 
 本版本针对 DSH `@deepseek-ai/dsh-skill-filesystem` **0.2.1-rc.3** 的实际加载器进行发现、正文加载和调用策略检查；同时检查常驻规则是否被指令发现器找到。该检查不调用模型，不能证明真实模型每次都主动搜索或正确推荐。

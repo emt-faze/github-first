@@ -41,6 +41,12 @@ python scripts/install.py --target dsh --with-rules
 
 详见 [DSH 安装与验证指南](docs/DSH.md)。两端共用同一个核心技能，DSH 无需额外服务、Codex 工具或 Cordis 配置。
 
+## 可选：Codex 和 DSH 共用 GitHub 认证
+
+如果已有 GitHub Token，可以在本机通过 GitHub CLI 配置一次，让两个宿主共用系统凭据库中的认证。详见 [共用认证指南](docs/GITHUB-AUTH.md)，包括隐藏输入、安全存储检查、账号与搜索验证、常驻规则和故障排查。
+
+Token 不写入插件或仓库。Codex 的 GitHub 连接器独立认证；GitHub Token 也不能替代 DSH 的模型或网页搜索服务密钥。
+
 ## 在 Codex 中使用
 
 ### 方式一：安装核心技能
@@ -118,9 +124,11 @@ skills/github-first/SKILL.md         核心工作流程
 skills/github-first/agents/          技能显示和调用配置
 assets/                             青绿色浅色／深色 SVG 图标
 examples/AGENTS.md                  可选的常驻规则示例
+examples/github-cli-AGENTS.md       可选的共用认证规则
 scripts/                            安装器及 DSH 加载验证
 tests/                              安装器回归测试
 docs/DSH.md                         DSH 使用与兼容性说明
+docs/GITHUB-AUTH.md                 Codex / DSH 共用 GitHub 认证指南
 LICENSE                             MIT 许可证
 ```
 
@@ -139,5 +147,7 @@ LICENSE                             MIT 许可证
 GitHub First is an instruction-only plugin for researching existing solutions before building new tools, apps, or major features. It compares suitability, deployment effort, costs, maintenance and licensing, then waits for the user to choose before implementation. Minor fixes are excluded; explicit task instructions take precedence.
 
 For DSH, run `python scripts/install.py --target dsh --with-rules`; use `--target shared` for a shared local installation. See [DSH setup](docs/DSH.md).
+
+Optionally authenticate GitHub CLI once under the same OS user and use it from both hosts. See [shared authentication](docs/GITHUB-AUTH.md). Never commit tokens or credential files; the Codex GitHub connector uses separate authentication.
 
 Install `skills/github-first` into `~/.agents/skills/`, or reuse the full plugin package in a compatible host. Optionally merge `examples/AGENTS.md` into your Codex instructions for a stronger default. The workflow is written in Chinese. It uses the host's existing search tools and does not guarantee automatic invocation. MIT licensed.

@@ -6,3 +6,11 @@ Thumbs.db
 .env.*
 *.log
 __pycache__/
+
+# Local authentication files must never be published.
+hosts.yml
+.credentials.yaml
+.git-credentials
+*.token
+import-result.json
+dsh-verification*.jsonl
