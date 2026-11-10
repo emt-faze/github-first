@@ -1,0 +1,6 @@
+interface:
+  display_name: "GitHub 优先"
+  short_description: "开发前深入查找现成方案，比较后由你选择"
+  default_prompt: "先深入搜索 GitHub 上与我需求相关的现成应用和项目，比较取舍并推荐，等我选定后再安装或开发。"
+policy:
+  allow_implicit_invocation: true

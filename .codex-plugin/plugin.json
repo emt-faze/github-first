@@ -1,0 +1,29 @@
+{
+  "name": "github-first",
+  "version": "1.0.0",
+  "description": "Search GitHub before building tools, apps, or major features. Compare existing solutions deeply and wait for the user to choose before implementation.",
+  "author": {
+    "name": "emt-faze"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/emt-faze/github-first",
+  "homepage": "https://github.com/emt-faze/github-first",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "GitHub 优先",
+    "shortDescription": "开发前先找现成方案，深入比较后由你选择",
+    "longDescription": "新建工具、应用或新增较大功能前，深入搜索 GitHub 的现成项目，必要时核查源码、发布记录与 Issues。综合比较功能、部署、成本、维护和许可证，给出证据与推荐，等待你选定后再安装或开发。小修小改不触发。使用宿主已有搜索能力；本机常驻规则辅助自动触发，不保证所有宿主与会话自动调用。",
+    "category": "Developer Tools",
+    "capabilities": [],
+    "defaultPrompt": [
+      "先查 GitHub 上是否有适合我需求的现成工具，深入比较后等我选择。"
+    ],
+    "logo": "./assets/icon.svg",
+    "composerIcon": "./assets/icon.svg",
+    "logoDark": "./assets/icon-dark.svg",
+    "composerIconDark": "./assets/icon-dark.svg",
+    "brandColor": "#0F766E",
+    "brandColorDark": "#5EEAD4",
+    "developerName": "emt-faze"
+  }
+}
